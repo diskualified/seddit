@@ -1,57 +1,34 @@
-'use client';
-
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import React, { useEffect } from "react";
+// import { useRouter } from "next/navigation";
+import axios from "axios";
+import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
+import { LoginForm } from "./loginForm";
 
 const LoginPage = () => {
-    const router = useRouter();
+  // //   const session = useSession();
 
-    const [user, setUser] = React.useState({
-        email: '',
-        password: '',
-    });
-
-    const [loading, setLoading] = React.useState(false);
-
-    const onLogin = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.post('api/users/login', user);
-            console.log('Login successful', response.data);
-            router.push('/');
-        } catch (error: any) {
-            console.log('Login failed', error.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+  // //   useEffect(() => {
+  // //     if (session.status === "authenticated") {
+  // //       router.push("/");
+  // //     }
+  // //   }, [session.status, router]);
 
   return (
-    <>
-        <div> LoginPage </div>
-        <p>{loading && 'logging in...'}</p>
-        <input
-            type="text"
-            value={user.email}
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-            placeholder="Your Email..."
-        />
+    <div className="h-screen w-screen flex justify-center items-center bg-slate-100">
+      <div className="sm:shadow-xl px-8 pb-8 pt-12 sm:bg-white rounded-xl space-y-12">
+        <h1 className="font-semibold text-2xl">Login</h1>
+        <LoginForm />
+        <p className="text-center">
+          Need to create an account?{" "}
+          <Link className="text-indigo-500 hover:underline" href="/register">
+            Create Account
+          </Link>{" "}
+        </p>
+      </div>
+      {/* <p>{loading && "logging in..."}</p> */}
+    </div>
+  );
+};
 
-        <input
-            type="password"
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
-            placeholder="Your Password..."
-        />
-
-        <button
-            onClick={onLogin}
-            className="btn">
-            Login
-        </button>
-    </>
-  )
-}
-
-export default LoginPage
+export default LoginPage;
