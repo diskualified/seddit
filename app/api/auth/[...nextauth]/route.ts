@@ -1,15 +1,14 @@
 import { connectToMongoDB } from "@/lib/dbconfig";
 import User from "@/models/userModel";
-import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
+// import { NextRequest, NextResponse } from "next/server";
+// import jwt from "jsonwebtoken";
 
 import { Account, User as AuthUser, getServerSession } from "next-auth";
 import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import axios from "axios";
 
 export const authOptions: NextAuthOptions = {
   // session default is "jwt" --> encrypted JWT = JWE

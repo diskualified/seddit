@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
 // import { useRouter } from "next/navigation";
-import axios from "axios";
-import { signIn, useSession } from "next-auth/react";
+// import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { LoginForm } from "./loginForm";
 
 const LoginPage = () => {
-  // //   const session = useSession();
+  //   const session = useSession();
 
-  // //   useEffect(() => {
-  // //     if (session.status === "authenticated") {
-  // //       router.push("/");
-  // //     }
-  // //   }, [session.status, router]);
+  //   useEffect(() => {
+  //     if (session.status === "authenticated") {
+  //       router.push("/");
+  //     }
+  //   }, [session.status, router]);
 
   return (
     <div className="h-screen w-screen flex justify-center items-center bg-slate-100">
