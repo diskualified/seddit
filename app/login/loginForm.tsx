@@ -3,7 +3,6 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-// import { getAuth } from "../api/auth/[...nextauth]/route";
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -12,11 +11,6 @@ export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  // const session = getAuth();
-  // if (!session) {
-  //     // router.push("/");
-  // }
 
   const session = useSession();
   useEffect(() => {
@@ -34,7 +28,6 @@ export const LoginForm = () => {
         password,
         callbackUrl,
       });
-      //   console.log("Res: ", res);
       if (!res?.error) {
         router.push(callbackUrl);
       } else {

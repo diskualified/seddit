@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
-// import { useRouter } from "next/navigation";
-// import { signIn, useSession } from "next-auth/react";
+import React from "react";
+import { getAuth } from "../api/auth/[...nextauth]/route";
 import Link from "next/link";
 import { LoginForm } from "./loginForm";
+import { redirect } from "next/navigation";
 
 const LoginPage = () => {
-  //   const session = useSession();
-
-  //   useEffect(() => {
-  //     if (session.status === "authenticated") {
-  //       router.push("/");
-  //     }
-  //   }, [session.status, router]);
+  const session = getAuth();
+//   if (!session) {
+//     redirect("/login");
+//   } else {
+//     redirect("/");
+//   }
 
   return (
     <div className="h-screen w-screen flex justify-center items-center bg-slate-100">
@@ -25,7 +24,6 @@ const LoginPage = () => {
           </Link>{" "}
         </p>
       </div>
-      {/* <p>{loading && "logging in..."}</p> */}
     </div>
   );
 };
